@@ -66,16 +66,14 @@ for y in range (len(position)):
                     print "top" + str(lookFor[word][0])
                     if position[y][x-1] == lookFor[word][1]:
                         direction = 4
-                    elif position[y][x-1] == lookFor[word][1]:
+                    elif position[y][x+1] == lookFor[word][1]:
                         direction = 5
                     elif position[y+1][x-1] == lookFor[word][1]:
                         direction = 6
                     elif position[y+1][x] == lookFor[word][1]:
                         direction = 7
-                    elif position[y+1][x-1] == lookFor[word][1]:
+                    elif position[y+1][x+1] == lookFor[word][1]:
                         direction = 8
-                    else:
-                        print position[y][x+1]
                 elif y == len(position):
                     print "botom" + str(lookFor[word][0])
                     if position[y-1][x-1] == lookFor[word][1]:
