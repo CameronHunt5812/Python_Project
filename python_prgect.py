@@ -18,103 +18,90 @@ print position
 #make a list of the words that you are looking for
 lookFor = [f.readline() for w in range(numOfWords)]
 print lookFor
-for y in range (len(position)):
-    for x in range (len(position[y])):
+
+for y in range (height):
+    for x in range (width):
         for word in range (len(lookFor)):
             if position[y][x] == lookFor[word][0]:
+                FirstLetter = lookFor[word][0]
+                SecondLetter = lookFor[word][1]
                 if y == 0 and x == 0:
-                    print "top left" + str(lookFor[word][0])
-                    if position[y][x+1] == lookFor[word][1]:
+                    print "top left" + str(FirstLetter)
+                    if position[y][x+1] == SecondLetter:
                         direction = 5
-                    elif position[y+1][x] == lookFor[word][1]:
+                    elif position[y+1][x] == SecondLetter:
                         direction = 7
-                    elif position[y+1][x+1] == lookFor[word][1]:
+                    elif position[y+1][x+1] == SecondLetter:
                         direction = 8
-                    else:
-                        print "not here"
-                elif y == 0 and x == len(position[y]):
-                    print "top right" + str(lookFor[word][0])
-                    if position[y][x-1] == lookFor[word][1]:
+                elif y == 0 and x == width-1:
+                    print "top right" + str(FirstLetter)
+                    if position[y][x-1] == SecondLetter:
                         direction = 4
-                    elif position[y+1][x-1] == lookFor[word][1]:
+                    elif position[y+1][x-1] == SecondLetter:
                         direction = 6
-                    elif position[y+1][x] == lookFor[word][1]:
+                    elif position[y+1][x] == SecondLetter:
                         direction = 7
-                    else:
-                        print "not here"
-                elif y == len(position) and x == 0:
-                    print "botom leaft" + str(lookFor[word][0])
-                    if position[y-1][x] == lookFor[word][1]:
+                elif y == height-1 and x == 0:
+                    print "botom leaft" + str(FirstLetter)
+                    if position[y-1][x] == SecondLetter:
                         direction = 2
-                    elif position[y-1][x+1] == lookFor[word][1]:
+                    elif position[y-1][x+1] == SecondLetter:
                         direction = 3
-                    elif position[y][x+1] == lookFor[word][1]:
+                    elif position[y][x+1] == SecondLetter:
                         direction = 5
-                    else:
-                        print "not here"
-                elif y == len(position) and x == len(position[y]):
-                    print "botom right" + str(lookFor[word][0])
-                    if position[y-1][x] == lookFor[word][1]:
+                elif y == height-1 and x == width-1:
+                    print "botom right" + str(FirstLetter)
+                    if position[y-1][x] == SecondLetter:
                         direction = 1
-                    elif position[y-1][x-1] == lookFor[word][1]:
+                    elif position[y-1][x-1] == SecondLetter:
                         direction = 2
-                    elif position[y][x-1] == lookFor[word][1]:
+                    elif position[y][x-1] == SecondLetter:
                         direction = 4
-                    else:
-                        print "not here"  
-                elif y == 0 and x+1 <= len(position[y]):
-                    print "top" + str(lookFor[word][0])
-                    if position[y][x-1] == lookFor[word][1]:
+                elif y == 0:
+                    print "top" + str(FirstLetter)
+                    if position[y][x-1] == SecondLetter:
                         direction = 4
-                    elif position[y][x+1] == lookFor[word][1]:
+                    elif position[y][x+1] == SecondLetter:
                         direction = 5
-                    elif position[y+1][x-1] == lookFor[word][1]:
+                    elif position[y+1][x-1] == SecondLetter:
                         direction = 6
-                    elif position[y+1][x] == lookFor[word][1]:
+                    elif position[y+1][x] == SecondLetter:
                         direction = 7
-                    elif position[y+1][x+1] == lookFor[word][1]:
+                    elif position[y+1][x+1] == SecondLetter:
                         direction = 8
-                elif y == len(position):
-                    print "botom" + str(lookFor[word][0])
-                    if position[y-1][x-1] == lookFor[word][1]:
+                elif y == height-1:
+                    print "botom" + str(FirstLetter)
+                    if position[y-1][x-1] == SecondLetter:
                         direction = 1
-                    elif position[y-1][x] == lookFor[word][1]:
+                    elif position[y-1][x] == SecondLetter:
                         direction = 2
-                    elif position[y-1][x+1] == lookFor[word][1]:
+                    elif position[y-1][x+1] == SecondLetter:
                         direction = 3
-                    elif position[y][x-1] == lookFor[word][1]:
+                    elif position[y][x-1] == SecondLetter:
                         direction = 4
-                    elif position[y][x+1] == lookFor[word][1]:
+                    elif position[y][x+1] == SecondLetter:
                         direction = 5
-                    else:
-                        print "not here"
                 elif x == 0:
-                    print "left side" + str(lookFor[word][0])
-                    if position[y-1][x] == lookFor[word][1]:
+                    print "left side" + str(FirstLetter)
+                    if position[y-1][x] == SecondLetter:
                         direction = 2
-                    elif position[y-1][x+1] == lookFor[word][1]:
+                    elif position[y-1][x+1] == SecondLetter:
                         direction = 3
-                    elif position[y][x+1] == lookFor[word][1]:
+                    elif position[y][x+1] == SecondLetter:
                         direction = 5
-                    elif position[y+1][x] == lookFor[word][1]:
+                    elif position[y+1][x] == SecondLetter:
                         direction = 6
-                    elif position[y+1][x+1] == lookFor[word][1]:
+                    elif position[y+1][x+1] == SecondLetter:
                         direction = 7
-                    else:
-                        print "not here"
-                elif x == len(position[y]):
-                    print "right side" + str(lookFor[word][0])
-                    if position[y-1][x] == lookFor[word][1]:
+                elif x == width-1:
+                    print "right side" + str(FirstLetter)
+                    if position[y-1][x] == SecondLetter:
                         direction = 1
-                    elif position[y-1][x-1] == lookFor[word][1]:
+                    elif position[y-1][x-1] == SecondLetter:
                         direction = 2
-                    elif position[y][x-1] == lookFor[word][1]:
+                    elif position[y][x-1] == SecondLetter:
                         direction = 4
-                    elif position[y+1][x-1] == lookFor[word][1]:
+                    elif position[y+1][x-1] == SecondLetter:
                         direction = 6
-                    elif position[y+1][x] == lookFor[word][1]:
+                    elif position[y+1][x] == SecondLetter:
                         direction = 7
-                    else:
-                        print "not here"
-                #print "it got here"
-                #for char in range (len(lookFor[word])):
