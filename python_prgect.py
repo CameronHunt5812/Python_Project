@@ -18,7 +18,22 @@ print position
 #make a list of the words that you are looking for
 lookFor = [f.readline() for w in range(numOfWords)]
 print lookFor
-
+def search(side,position,y,x,):
+    if side == "top left":
+        if position[y][x+1] == SecondLetter:
+            direction = 5
+        elif position[y+1][x] == SecondLetter:
+            direction = 7
+        elif position[y+1][x+1] == SecondLetter:
+            direction = 8
+    elif side == "top right":
+        if position[y][x-1] == SecondLetter:
+            direction = 4
+        elif position[y+1][x-1] == SecondLetter:
+            direction = 6
+        elif position[y+1][x] == SecondLetter:
+            direction = 7
+    elif side == "botom right":
 for y in range (height):
     for x in range (width):
         for word in range (len(lookFor)):
@@ -27,12 +42,7 @@ for y in range (height):
                 SecondLetter = lookFor[word][1]
                 if y == 0 and x == 0:
                     print "top left" + str(FirstLetter)
-                    if position[y][x+1] == SecondLetter:
-                        direction = 5
-                    elif position[y+1][x] == SecondLetter:
-                        direction = 7
-                    elif position[y+1][x+1] == SecondLetter:
-                        direction = 8
+                    
                 elif y == 0 and x == width-1:
                     print "top right" + str(FirstLetter)
                     if position[y][x-1] == SecondLetter:
