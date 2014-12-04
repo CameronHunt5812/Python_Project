@@ -1,6 +1,6 @@
 f = open("E:\\wordsearch.txt","r")
 direction = 0
-letter = 1
+i = 1
 CheckAgen = True
 #Find the height, width and how many words to look for in the file.
 height = int(f.readline())
@@ -89,37 +89,39 @@ def search(side,position,y,x,):
             direction = "D"
     return direction
 
-def searchDirection(direction,position,y,x):
-    global letter
-    global CheckAgen
+def searchDirection(direction,word,position,y,x):
+    CheckAgen = True
     while CheckAgen == True:
-        for char in range (len(word) - 2):
-            letter = letter + 1
+        for char in range (word - 2):
+            letter = lookFor[word][char]
             if direction ==  "upL":
-                if char == position[y-letter][x-letter]:
+                print "got here"
+                if letter == position[y-char][x-char]:
                     CheckAgen = True
             elif direction == "up":
-                if char == position[y-letter][x]:
+                if letter == position[y-char][x]:
                     CheckAgen = True
             elif direction == "upR":
-                if char == position[y-letter][x+letter]:
+                if letter == position[y-char][x+char]:
                     CheckAgen = True
             elif direction == "L":
-                if char == position[y][x-letter]:
+                if letter == position[y][x-char]:
                     CheckAgen = True
             elif direction == "R":
-                if char == position[y][x+letter]:
+                if letter == position[y][x+char]:
                     CheckAgen = True
             elif direction == "DL":
-                if char == position[y+letter][x-letter]:
+                if letter == position[y+char][x-char]:
                     CheckAgen = True
             elif direction == "D":
-                if char == position[y+letter][x]:
+                if letter == position[y+char][x]:
                     CheckAgen = True
             elif direction == "DR":
-                if char == position[y+letter][x+letter]:
+                if letter == position[y+char][x+char]:
                     CheckAgen = True
-
+            else:
+                CheckAgen = False
+            
 for y in range (height):
     for x in range (width):
         for word in range (len(lookFor)):
@@ -150,5 +152,7 @@ for y in range (height):
                 elif x == width-1:
                     print "right side" + str(FirstLetter)
                     side = "right side"
+                else:
+                    print "middle" + str(FirstLetter)
                 direction = search(side,position,y,x)
-                searchDirection(direction,position,y,x)
+                searchDirection(direction,word,position,y,x)
