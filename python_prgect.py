@@ -18,6 +18,9 @@ print position
 #make a list of the words that you are looking for
 lookFor = [f.readline() for w in range(numOfWords)]
 print lookFor
+def serch(edge,position,direction):
+    
+
 
 for y in range (height):
     for x in range (width):
