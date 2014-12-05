@@ -92,6 +92,7 @@ def search(side,position,y,x,):
             direction = "upL"
         elif position[y-1][x] == SecondLetter:
             direction = "up"
+
         elif position[y-1][x+1] == SecondLetter:
             direction = "upR"
         elif position[y][x-1] == SecondLetter:
@@ -107,10 +108,9 @@ def search(side,position,y,x,):
     return direction
 
 def searchDirection(direction,word,position,y,x):
-    if direction != 0:
         for char in range (len(lookFor[word]) - 1):
                 letter = lookFor[word][char]
-                if direction ==  "upL" and y-char != -1 and x+char != width+1:
+                if direction ==  "upL" and y-char != 0 and x+char != 0:
                     if letter == position[y-char][x-char]:
                         print position[y-char][x-char]
                     else:
@@ -120,12 +120,12 @@ def searchDirection(direction,word,position,y,x):
                         print position[y-char][x]
                     else:
                         direction = 0
-                elif direction == "upR" and x+char != width:
+                elif direction == "upR" and y-char != -1 and x+char != width:
                     if letter == position[y-char][x+char]:
                         print position[y-char][x+char]
                     else:
                         direction = 0
-                elif direction == "L":
+                elif direction == "L" and x-char != 0:
                     if letter == position[y][x-char]:
                         print position[y][x-char]
                     else:
@@ -135,17 +135,17 @@ def searchDirection(direction,word,position,y,x):
                         print position[y][x+char]
                     else:
                         direction = 0
-                elif direction == "DL":
+                elif direction == "DL" and y+char != -1 and x-char:
                     if letter == position[y+char][x-char]:
                         print position[y+char][x-char]
                     else:
                         direction = 0
-                elif direction == "D":
+                elif direction == "D" and y+char != height:
                     if letter == position[y+char][x]:
                         print position[y+char][x]
                     else:
                         direction = 0
-                elif direction == "DR" and y+char != height:
+                elif direction == "DR" and y+char != height and x+char != width:
                     if letter == position[y+char][x+char]:
                         print position[y+char][x+char]
                     else:
@@ -172,9 +172,9 @@ for y in range (height):
                 elif y == height-1:
                     side = "botom"
                 elif x == 0:
-                    side = "leaft side"
+                    side = "leaft"
                 elif x == width-1:
-                    side = "right side"
+                    side = "right"
                 else:
                     side = "middle"
                 print side + " x=" + str(x+1) + " y=" + str(y*(-1)-1)
