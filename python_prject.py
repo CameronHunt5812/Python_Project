@@ -153,6 +153,7 @@ def searchDirection(direction,word,position,y,x):
                 else:
                     direction = 0
 
+
 for y in range (height):
     for x in range (width):
         for word in range (len(lookFor)):
