@@ -1,4 +1,4 @@
-f = open("E:\\wordsearch.txt","r")
+f = open("F:\\wordsearch.txt","r")
 direction = 0
 i = 1
 CheckAgen = True
@@ -20,7 +20,122 @@ print position
 #make a list of the words that you are looking for
 lookFor = [f.readline() for w in range(numOfWords)]
 print lookFor
-def search(side,position,y,x,):
+found = [0 for f in range (len(lookFor))]
+def search(side,placesToCheck,position,y,x,):
+    pDi = -1
+    for di in (placesToCheck):
+        pDi = pDi + 1
+        if di == True:
+                if pDi == 0:
+                    for char in range (len(lookFor[word]) - 1):
+                        if y-char != 0 and x-char != 0:
+                            letter = lookFor[word][char]
+                            if letter == position[y-char][x-char]:
+                                print position[y-char][x-char]
+                                if char == len(lookFor[word]):
+                                    
+                        placesToCheck[pDi] = 0
+                if pDi == 1:
+                    if position[y-1][x] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if y-char != 0:
+                                letter = lookFor[word][char]
+                                if letter == position[y-char][x]:
+                                    print position[y-char][x]
+                                    placesToCheck[pDi] = 0
+                if pDi == 2:
+                    if position[y-1][x+1] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if y-char != 0 and x+char != width:
+                                letter = lookFor[word][char]
+                                if letter == position[y-char][x+char]:
+                                    print position[y-char][x+char]
+                                    placesToCheck[pDi] = 0
+                if pDi == 3:
+                    if position[y][x-1] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if x-char != 0:
+                                letter = lookFor[word][char]
+                                if letter == position[y][x-1]:
+                                    print position[y][x-1]
+                                    placesToCheck[pDi] = 0
+                if pDi == 4:
+                    if position[y][x-1] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if x-char != 0:
+                                letter = lookFor[word][char]
+                                if letter == position[y][x-char]:
+                                    print position[y][x-char]
+                                    placesToCheck[pDi] = 0
+                if pDi == 5:
+                    print side
+                    print str(y) + " " + str(x)
+                    for char in range (len(lookFor[word]) - 1):
+                        if x+char != width:
+                            if position[y][x+1] == SecondLetter:
+                                letter = lookFor[word][char]
+                                if letter == position[y][x-char]:
+                                    print position[y][x-char]
+                                    placesToCheck[pDi] = 0
+                if pDi == 6:
+                    if position[y+1][x-1] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if y+char != height and x-char != 0:
+                                letter = lookFor[word][char]
+                                if letter == position[y+char][x-char]:
+                                    print position[y+char][x-char]
+                                    placesToCheck[pDi] = 0
+                if pDi == 7:
+                    if position[y+1][x] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if y+char != height:
+                                letter = lookFor[word][char]
+                                if letter == position[y+char][x]:
+                                    print position[y+char][x]
+                                    placesToCheck[pDi] = 0
+                if pDi == 8:
+                    if position[y+1][x+1] == SecondLetter:
+                        for char in range (len(lookFor[word]) - 1):
+                            if y+char != height and x+char != width:
+                                letter = lookFor[word][char]
+                                if letter == position[y+char][x+char]:
+                                    print position[y+char][x+char]
+                                    placesToCheck[pDi] = 0
+        
+        
+        
+        
+                    
+"""    
+        if position[y-1][x-1] == SecondLetter:
+            direction = "upL"
+        elif position[y-1][x] == SecondLetter:
+            direction = "up"
+        elif position[y-1][x+1] == SecondLetter:
+            direction = "upR"
+        elif position[y][x-1] == SecondLetter:
+            direction = "L"
+        elif position[y][x+1] == SecondLetter:
+            direction = "R"
+        elif position[y+1][x-1] == SecondLetter:
+            direction = "DL"
+        elif position[y+1][x] == SecondLetter:
+            direction = "D"
+        elif position[y+1][x+1] == SecondLetter:
+            direction = "DR"
+
+
+
+
+
+
+
+
+
+
+
+
+
     global direction
     if side == "top leaft":
         if position[y][x+1] == SecondLetter:
@@ -92,7 +207,6 @@ def search(side,position,y,x,):
             direction = "upL"
         elif position[y-1][x] == SecondLetter:
             direction = "up"
-
         elif position[y-1][x+1] == SecondLetter:
             direction = "upR"
         elif position[y][x-1] == SecondLetter:
@@ -106,7 +220,7 @@ def search(side,position,y,x,):
         elif position[y+1][x+1] == SecondLetter:
             direction = "DR"
     return direction
-
+"""
 def searchDirection(direction,word,position,y,x):
         for char in range (len(lookFor[word]) - 1):
                 letter = lookFor[word][char]
@@ -115,7 +229,7 @@ def searchDirection(direction,word,position,y,x):
                         print position[y-char][x-char]
                     else:
                         direction = 0
-                elif direction == "up":
+                if direction == "up":
                     if letter == position[y-char][x]:
                         print position[y-char][x]
                     else:
@@ -160,25 +274,35 @@ for y in range (height):
             if position[y][x] == lookFor[word][0]:
                 FirstLetter = lookFor[word][0]
                 SecondLetter = lookFor[word][1]
+                placesToCheck = []
                 if y == 0 and x == 0:
                     side = "top leaft"
+                    placesToCheck = [0,0,0,0,1,0,1,1]
                 elif y == 0 and x == width-1:
                     side = "top right"
+                    placesToCheck = [0,0,0,1,0,1,1,0]
                 elif y == height-1 and x == 0:
                     side = "botom leaft"
+                    placesToCheck = [0,1,1,0,1,0,0,0]
                 elif y == height-1 and x == width-1:
-                    side = "botom leaft"
+                    side = "botom right"
+                    placesToCheck = [1,1,0,1,0,0,0,0]
                 elif y == 0:
                     side ="top"
+                    placesToCheck = [0,0,0,1,1,1,1,1]
                 elif y == height-1:
                     side = "botom"
+                    placesToCheck = [1,1,1,1,1,0,0,0]
                 elif x == 0:
                     side = "leaft"
+                    placesToCheck = [0,1,1,0,1,0,1,1,]
                 elif x == width-1:
                     side = "right"
+                    placesToCheck = [1,1,0,1,0,1,1,0]
                 else:
                     side = "middle"
-                print side + " x=" + str(x+1) + " y=" + str(y*(-1)-1)
-                direction = search(side,position,y,x)
+                    placesToCheck = [1,1,1,1,1,1,1,1]
+                #print side + " x=" + str(x+1) + " y=" + str(y*(-1)-1)
+                direction = search(side,placesToCheck,position,y,x)
                 searchDirection(direction,word,position,y,x)
                 direction = 0
