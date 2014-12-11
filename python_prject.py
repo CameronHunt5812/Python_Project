@@ -20,6 +20,7 @@ print lookFor
 found = [0 for f in range (len(lookFor))]
 def search(placesToCheck,position,y,x,):
     pDi = -1
+    #get the values forom the list to see which adjacent places you can check
     for di in (placesToCheck):
         pDi = pDi + 1
         if True == True:
