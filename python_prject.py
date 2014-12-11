@@ -1,4 +1,4 @@
-f = open("F:\\wordsearch2.txt","r")
+f = open("C:\Users\Cameron\Documents\GitHub\Python_Project\wordsearch3","r")
 #Find the height, width and how many words to look for in the file.
 height = int(f.readline())
 width = int(f.readline()) 
